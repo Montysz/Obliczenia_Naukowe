@@ -1,3 +1,9 @@
+#Autor: Szymon Brzeziński
+
+"""
+Funkcja macheps znajdująca epsilon maszynowy
+mode - typ arytmetki w której wykonujemy obliczenia 
+"""
 function macheps(mode)
     m = mode(1.0)
     while mode(1.0) + m / 2 > 1.0 && mode(1.0) + m / 2 == 1 + m / 2
@@ -6,6 +12,10 @@ function macheps(mode)
     m
 end
 
+"""
+Funkcja eta znajdująca liczbę maszynową eta
+mode - typ arytmetki w której wykonujemy obliczenia 
+"""
 function eta(mode)
     e = mode(1.0)
     while e / 2 != 0
@@ -15,6 +25,10 @@ function eta(mode)
 end
 
 
+"""
+Funkcja max znajdująca maksymalną wartość
+mode - typ arytmetki w której wykonujemy obliczenia 
+"""
 function max(mode)
     m = mode(1.0)
     while !(isinf(m * 2))
@@ -29,7 +43,9 @@ function max(mode)
 end
 
 
-
+"""
+floats - Tablicza przechowująca typy arytmetki
+"""
 floats = [Float16, Float32, Float64]
 
 foreach(mode -> println(macheps(mode), " eps: ", eps(mode)), floats)
